@@ -15,12 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 // CORS Configuration
 const corsOptions = {
-  origin: [
-    'http://localhost:3000',  // React frontend
-    'http://127.0.0.1:3000',
-    'http://localhost:5000',  // Backend server
-    'http://127.0.0.1:5000'
-  ],
+  origin: '*',  // Allow all origins
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: [
     'Content-Type', 
