@@ -18,21 +18,20 @@ api.interceptors.request.use(
       const user = auth.currentUser;
       
       if (user) {
-        const token = await user.getIdToken();
+        const token = await user.getIdToken(true); // Force refresh token
         config.headers.Authorization = `Bearer ${token}`;
       }
-      return config;
     } catch (error) {
       console.error('Error getting auth token:', error);
-      return config;
+      // Don't throw error here, let the request proceed without token
+      // The server will handle unauthorized requests
     }
+    return config;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
-
-export default api;
 
 // Add a response interceptor to handle errors
 api.interceptors.response.use(

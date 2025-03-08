@@ -5,7 +5,6 @@ import { formatCurrency } from '../utils/formatCurrency';
 import { useAuth } from '../contexts/AuthContext';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import '../styles/Dashboard.css';
-import { api } from '../utils/api';
 
 // Register ChartJS components
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -29,7 +28,7 @@ const Dashboard = () => {
       setError(null);
       
       const token = await currentUser.getIdToken();
-      const response = await axios.get('http://localhost:5000/api/dashboard', {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/dashboard`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
