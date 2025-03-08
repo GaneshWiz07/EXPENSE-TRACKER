@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAuth } from 'firebase/auth';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -18,20 +18,21 @@ api.interceptors.request.use(
       const user = auth.currentUser;
       
       if (user) {
-        const token = await user.getIdToken(true); // Force refresh token
+        const token = await user.getIdToken();
         config.headers.Authorization = `Bearer ${token}`;
       }
+      return config;
     } catch (error) {
       console.error('Error getting auth token:', error);
-      // Don't throw error here, let the request proceed without token
-      // The server will handle unauthorized requests
+      return config;
     }
-    return config;
   },
   (error) => {
     return Promise.reject(error);
   }
 );
+
+export default api;
 
 // Add a response interceptor to handle errors
 api.interceptors.response.use(

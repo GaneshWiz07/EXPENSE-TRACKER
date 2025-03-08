@@ -5,6 +5,7 @@ import { formatCurrency } from '../utils/formatCurrency';
 import { useAuth } from '../contexts/AuthContext';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import '../styles/Dashboard.css';
+import { api } from '../utils/api';
 
 // Register ChartJS components
 ChartJS.register(ArcElement, Tooltip, Legend);
