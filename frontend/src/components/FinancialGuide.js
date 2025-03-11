@@ -67,7 +67,7 @@ const FinancialGuide = ({ expenses, monthlyReport }) => {
   return (
     <div className="financial-guide-section">
       <div className="guide-header">
-        <h3>AI Financial Guide</h3>
+        <h3>Financial Guide</h3>
         <p className="guide-subtitle">Personalized recommendations based on your spending patterns</p>
       </div>
 
