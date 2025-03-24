@@ -57,7 +57,7 @@ const Login = () => {
       <div className="auth-card">
         <div className="auth-header">
           <h2>Login to Expense Tracker</h2>
-          <p>Manage your finances with AI-powered insights</p>
+          <p>Track your finances with ease and confidence</p>
         </div>
 
         {error && <div className="error-message">{error}</div>}
